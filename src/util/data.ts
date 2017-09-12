@@ -35,7 +35,5 @@ export function dateFormat (date:Date , format:string):string {
     var minutes = addZero(date.getMinutes() + "");
     var seconds = addZero(date.getSeconds() + "");
     result = result.replace(/YYYY/, year).replace(/mm/, month).replace(/DD/, day).replace(/hh/, hours).replace(/MM/, minutes).replace(/ss/, seconds);
-    console.log(result)
     return result;
 }
-
