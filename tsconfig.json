@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+      "target": "es6",
+      "module": "umd",
+      "sourceMap": true,
+      "outDir": "build/js"
+    },
+    "exclude": [
+      "node_modules",
+      "typings/main",
+      "typings/main.d.ts"
+    ]
+  }
