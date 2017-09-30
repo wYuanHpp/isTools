@@ -78,7 +78,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     !global["T"] && (global["T"] = tool);
     global["isTools"] = tool;
 })(typeof window == "object" ? window : global);
-console.log(global["T"]);
 
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(1)))
 
@@ -116,7 +115,8 @@ module.exports = g;
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["addZero"] = addZero;
-/* harmony export (immutable) */ __webpack_exports__["dateFormat"] = dateFormat;
+/* harmony export (immutable) */ __webpack_exports__["simpleDateFormat"] = simpleDateFormat;
+/* harmony export (immutable) */ __webpack_exports__["deepCopy"] = deepCopy;
 /**
  * 对数字进行补零
  * @param {(string | number)} el 要进行操作的字符串或数字
@@ -146,7 +146,7 @@ function addZero(el, num = 2, isInteger = true) {
  * @param {string} format example:"YYYY/mm/DD hh:MM:ss"
  * @returns {string} 返回格式化后的日期字符串
  */
-function dateFormat(date, format) {
+function simpleDateFormat(date, format) {
     var result = format;
     var year = date.getFullYear() + "";
     var month = addZero(date.getMonth() + 1 + "");
@@ -155,8 +155,44 @@ function dateFormat(date, format) {
     var minutes = addZero(date.getMinutes() + "");
     var seconds = addZero(date.getSeconds() + "");
     result = result.replace(/YYYY/, year).replace(/mm/, month).replace(/DD/, day).replace(/hh/, hours).replace(/MM/, minutes).replace(/ss/, seconds);
-    console.log(result);
     return result;
+}
+/**
+ *
+ *
+ * @export
+ * @param {any} collection 需要进行深拷贝的数组或对象
+ * @returns
+ */
+function deepCopy(collection) {
+    var obj;
+    //参数为数组
+    if (collection instanceof Array) {
+        obj = [];
+        for (let i = 0; i < collection.length; i++) {
+            obj[i] = deepCopy(collection[i]);
+        }
+        return obj;
+        //参数为函数
+    }
+    else if (collection instanceof Function) {
+        return collection;
+        //参数为对象
+    }
+    else if (collection instanceof Object) {
+        obj = {};
+        for (var item in collection) {
+            if (collection.hasOwnProperty(item)) {
+                obj[item] = deepCopy(collection[item]);
+            }
+        }
+        return obj;
+        //参数为其他数据类型
+    }
+    else {
+        obj = collection;
+        return obj;
+    }
 }
 
 
@@ -167,6 +203,7 @@ function dateFormat(date, format) {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony export (immutable) */ __webpack_exports__["getOffset"] = getOffset;
+/* harmony export (immutable) */ __webpack_exports__["setCssPrefix"] = setCssPrefix;
 /**
  * @param {(HTMLElement|string)} el 需要金乡计算的dom对象或对于的选择器字符串
  * @returns {object} 返回一个含有left 和 top的对象,对应目标元素到最外成元素的left和top值
@@ -183,6 +220,10 @@ function getOffset(el) {
         left: left,
         top: top
     };
+}
+function setCssPrefix(name) {
+    var result = "";
+    return result;
 }
 
 

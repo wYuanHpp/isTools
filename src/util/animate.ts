@@ -58,7 +58,7 @@ Animate.prototype.invert = function (time, callback) {
     }, 0);
 };
 
-exports.createAnimate = function(el, time, fn, callback) {
+export function createAnimate(el, time, fn, callback) {
     var ani = new Animate(el);
     ani.init();
     ani.action(fn);
