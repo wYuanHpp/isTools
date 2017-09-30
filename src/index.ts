@@ -5,5 +5,4 @@ import *  as css from "./util/css"
     !global["T"] && (global["T"] = tool);
     global["isTools"] = tool;
 })(typeof window == "object"?window:global)
-console.log(global["T"])
 

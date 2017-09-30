@@ -16,3 +16,9 @@ export function getOffset(el: HTMLElement|string):object {
         top: top
     }
 }
+
+export function setCssPrefix(name:string):string{
+    var result = "";
+    
+    return result;
+}
